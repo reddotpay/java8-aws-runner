@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk
+FROM openjdk:12-jdk
 LABEL maintainer="daryl.n.w.k@gmail.com"
 
 ARG MAVEN_VERSION=3.6.0
@@ -21,9 +21,3 @@ COPY settings-docker.xml /usr/share/maven/ref/
 
 ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
 CMD ["mvn"]
-
-RUN curl -O https://bootstrap.pypa.io/get-pip.py
-RUN python get-pip.py --user
-RUN ~/.local/bin/pip --version
-RUN ~/.local/bin/pip install awscli --upgrade --user
-RUN ~/.local/bin/aws --version
